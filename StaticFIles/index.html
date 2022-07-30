@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<div class="everything">
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="header" id="header">
+    <h1>Zocpets</h1>
+  
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        function myFunction(){
+            
+            axios.get("https://localhost:5001/doctors/appointments").then(response => {
+                console.log("response:", response.data)
+                const docs = response.data;
+                
+                const dataDiv = document.getElementById("apptData");
+                for (let i = 0; i < docs.length; i++){
+                    const currDoc/*{vetId, name, specialty}*/ = docs[i];
+                    const appts/*{apptId, apptDate, apptTime}*/ = currDoc.appointments;
+                    
+                    console.log(currDoc, appts)
+                    
+                    const nameText = document.createElement("p");
+                    nameText.textContent = currDoc.name;
+                    nameText.style.fontSize = "24pt"
+
+                    const holdDiv = document.createElement("div");
+                    holdDiv.style.height = "300px"
+                    holdDiv.append(nameText)
+                    let id = 1
+                    for (let j = 0; j < appts.length; j++){
+                        const apptDiv = document.createElement("div");
+                        apptDiv.style.borderBottom = "thin solid #F5E709";
+                        apptDiv.style.paddingLeft = "20px"
+                        apptDiv.style.marginRight = "30%"
+                        
+                        apptDiv.id = id;
+                        id++;
+                        apptDiv.style.cssFloat = "left";
+                        apptDiv.style.width = "100%"
+                        const currAppt = appts[j];
+                        const dateText = document.createElement("p");
+                        dateText.textContent = currAppt.apptDate;
+                        dateText.style.fontSize = "16pt"
+                        dateText.style.cssFloat = "left";
+                        const timeButton = document.createElement("button");
+                        timeButton.textContent = currAppt.apptTime;
+                        timeButton.style.height = "50px"
+                        timeButton.style.width = "100px"
+                        timeButton.style.backgroundColor = "yellow"
+                        timeButton.style.cssFloat = "right";
+                        timeButton.style.borderTop = "thin solid #F5E709"
+                        timeButton.style.marginRight = "50%"
+                        apptDiv.append(dateText)
+                        apptDiv.append(timeButton)
+                        holdDiv.append(apptDiv)
+                        
+                    }
+                    dataDiv.append(holdDiv)
+                    
+                    
+                    
+                  /*  holdDiv.append(apptDateText)
+                    holdDiv.append(appTimeText)*/
+                    
+                    
+                    
+                }
+                
+            }).catch(err => console.log("err", err))
+        }
+    </script>
+</div>
+<div class="body">
+    <p id="tagline"> Find local vets for your pets</p>
+    <br>
+    <div id="search">
+        <!-- <input type ="text" placeholder="Animal" size=20 height=30/> -->
+        <select name="Animal" id="Animal" placeholder="Animal">
+            <option value="Animal" disabled selected>Animal</option>
+            <option value="Cat">Cat</option>
+            <option value="Dog">Dog</option>
+            <option value="Lizard">Lizard</option>
+        </select>
+        <input type ="text" placeholder="City, state or zipcode" size=15/>
+        <input type ="text" placeholder="Condition, procedure..." size=23/>
+        <input type="date" id="date" placeholder="Today">
+        <button name="Submit" id="demo" style="height=55px; width:200px" onclick="myFunction()">Find Care</button>
+    </div>
+</div>
+</div>
+<div id="apptData">
+    
+</div>
+<div class="zocpetsFooter" >
+    <h2>
+    </h2>
+</div>
+</body>
+</html>

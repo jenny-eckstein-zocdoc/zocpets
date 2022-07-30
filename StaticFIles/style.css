@@ -1,0 +1,71 @@
+/* body{
+    background-color: #D9E4F2;
+} */
+
+.everything{
+    background-color: #D9E4F2;
+    height: 550px;
+}
+
+.header{
+    height: 100px;
+}
+
+#header{
+    display: flex;
+}
+
+h1{
+    font-family: Helvetica;
+    color: #192A50;
+    font-size: 50px;
+}
+
+a{
+    color: #192A50;
+    font-family: Helvetica;
+    padding: 15px;
+}
+
+input{
+    width: 90%;
+}
+
+button{
+    width: 90%;
+}
+#search{
+    margin: 5px;
+    display: flex;
+    justify-content: space-around;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#tagline{
+    padding-left: 20px;
+}
+
+#toprightbuttons{
+    font-family: Arial;
+    display: flex;
+    right: 0;
+    position: absolute;
+    font-size: 18px;
+}
+
+.body{
+    height: 100px;
+    background-color: #D9E4F2;
+    font-family: Helvetica;
+}
+.body p{
+    padding-top: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    color:#192A50;
+}
+.zocpetsFooter{
+    height: 400px;
+    background-color: #5FC69B;
+}
